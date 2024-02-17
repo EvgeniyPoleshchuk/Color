@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/MixColors"
+        android:layout_width="134dp"
+        android:layout_height="27dp"
+        android:gravity="center"
+        android:scrollbarStyle="outsideInset"
+        android:text="@string/mixcolors"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <TextView
+        android:id="@+id/sumView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/InputColor"
+        app:layout_constraintStart_toStartOf="@+id/InputColor"
+        app:layout_constraintTop_toBottomOf="@+id/InputColor" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="="
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/InputColor3"
+        app:layout_constraintStart_toStartOf="@+id/InputColor3"
+        app:layout_constraintTop_toBottomOf="@+id/InputColor3" />
+
+    <TextView
+        android:id="@+id/Color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Color"
+        app:layout_constraintEnd_toEndOf="@+id/MixColors"
+        app:layout_constraintStart_toStartOf="@+id/MixColors"
+        app:layout_constraintTop_toBottomOf="@+id/MixColors" />
+
+    <TextView
+        android:id="@+id/Color2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Color"
+        app:layout_constraintEnd_toEndOf="@+id/sumView"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="@+id/sumView"
+        app:layout_constraintTop_toBottomOf="@+id/sumView" />
+
+    <TextView
+        android:id="@+id/Color3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/color"
+        app:layout_constraintEnd_toEndOf="@+id/sum2View"
+        app:layout_constraintStart_toStartOf="@+id/sum2View"
+        app:layout_constraintTop_toBottomOf="@+id/sum2View" />
+
+    <TextView
+        android:id="@+id/InputColor3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="@+id/Color3"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="@+id/Color3"
+        app:layout_constraintTop_toBottomOf="@+id/Color3" />
+
+    <TextView
+        android:id="@+id/InputColor"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/red"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="@+id/Color"
+        app:layout_constraintStart_toStartOf="@+id/Color"
+        app:layout_constraintTop_toBottomOf="@+id/Color" />
+
+    <TextView
+        android:id="@+id/InputColor2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:clickable="true"
+        android:background="@color/lime"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/Color2"
+        app:layout_constraintStart_toStartOf="@+id/Color2"
+        app:layout_constraintTop_toBottomOf="@+id/Color2" />
+
+    <TextView
+        android:id="@+id/sum2View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/InputColor2"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/InputColor2"
+        app:layout_constraintTop_toBottomOf="@+id/InputColor2" />
+
+    <TextView
+        android:id="@+id/ResultColorView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/dim_gray"
+        app:layout_constraintEnd_toEndOf="@+id/InputColor3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/InputColor3"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:textOff="Рус"
+        android:textOn="Eng"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/ColorList"
+        android:layout_width="100dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/InputColor"
+        app:layout_constraintStart_toEndOf="@+id/InputColor"
+        app:layout_constraintTop_toTopOf="@+id/InputColor">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/blackView"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/gray"
+                    android:clickable="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/dark_gray"
+                    android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/light_grey"
+                    android:clickable="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/red"
+                    android:clickable="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/lime"
+                    android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/blue"
+                    android:clickable="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/yellow"
+                    android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/cyan"
+                    android:clickable="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/magenta"
+                    android:clickable="true" />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/InputColor"
+        app:layout_constraintEnd_toEndOf="@+id/InputColor"
+        android:background="@drawable/ic_launcher_backgrounde"
+        app:layout_constraintStart_toStartOf="@+id/InputColor"
+        app:layout_constraintTop_toTopOf="@+id/InputColor" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/InputColor2"
+        app:layout_constraintEnd_toEndOf="@+id/InputColor2"
+        android:background="@drawable/ic_launcher_backgrounde"
+        app:layout_constraintStart_toStartOf="@+id/InputColor2"
+        app:layout_constraintTop_toTopOf="@+id/InputColor2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_launcher_backgrounde"
+        app:layout_constraintBottom_toBottomOf="@+id/InputColor3"
+        app:layout_constraintEnd_toEndOf="@+id/InputColor3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/InputColor3"
+        app:layout_constraintTop_toTopOf="@+id/InputColor3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Result Color"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
