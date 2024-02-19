@@ -1,20 +1,23 @@
 package com.example.color
 
 
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.ToggleButton
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.ColorUtils
+import androidx.core.graphics.toColorInt
 import com.example.color.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    var color = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -23,53 +26,61 @@ class MainActivity : AppCompatActivity() {
         binding.InputColor.setOnClickListener {
             changeConstraints(R.id.InputColor)
             binding.ColorList.visibility = View.VISIBLE
-            setColorInInputColor(binding.InputColor, listTextView(), binding.Color)
+            setColorInInputColor(binding.InputColor, listTextView(),binding.Color)
         }
         binding.InputColor2.setOnClickListener {
             changeConstraints(R.id.InputColor2)
             binding.ColorList.visibility = View.VISIBLE
-            setColorInInputColor(binding.InputColor2, listTextView(), binding.Color2)
+            setColorInInputColor(binding.InputColor2, listTextView(),binding.Color2)
         }
         binding.InputColor3.setOnClickListener {
             changeConstraints(R.id.InputColor3)
             binding.ColorList.visibility = View.VISIBLE
-            setColorInInputColor(binding.InputColor3, listTextView(), binding.Color3)
+            setColorInInputColor(binding.InputColor3, listTextView(),binding.Color3)
         }
-//        binding.toggleButton2.setOnCheckedChangeListener { _, isChecked ->
-//            if (isChecked) {
-//
-//                }
-//            } else {
-//                colorName(binding.Color)
-//            }
-//        }
+        binding.toggleButton2.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.Color.text = changeLang(getColorIdInTextView(binding.InputColor).toColorInt(),true)
+                binding.Color2.text = changeLang(getColorIdInTextView(binding.InputColor2).toColorInt(),true)
+                binding.Color3.text = changeLang(getColorIdInTextView(binding.InputColor3).toColorInt(),true)
+            } else {
+                binding.Color.text = changeLang(getColorIdInTextView(binding.InputColor).toColorInt())
+                binding.Color2.text = changeLang(getColorIdInTextView(binding.InputColor2).toColorInt())
+                binding.Color3.text = changeLang(getColorIdInTextView(binding.InputColor3).toColorInt())
+
+            }
+        }
 
     }
 
     private fun setColorInInputColor(
         InputColorTextView: TextView,
         listTextView: List<TextView>,
-        InputColorName: TextView
+        setTextView: TextView
     ) {
         for (textViewColor in listTextView) {
             textViewColor.setOnClickListener {
                 setTextBackground(InputColorTextView, getColorIdInTextView(textViewColor))
-                color = getColorIdInTextView(textViewColor).toString()
-//                colorName(InputColorName)
+                if(binding.toggleButton2.isChecked) {
+                    setTextView.text = changeLang(getColorIdInTextView(textViewColor).toColorInt(),true)
+                }else {
+                    setTextView.text = changeLang(getColorIdInTextView(textViewColor).toColorInt())
+                }
                 result()
             }
         }
     }
 
     //Получаем цвет заднего фона из слоя
-    private fun getColorIdInTextView(text: TextView): Int {
+    private fun getColorIdInTextView(text: TextView): String {
         val cd = text.background as ColorDrawable
-        return cd.color
+        var result = Integer.toHexString(cd.color).drop(2)
+        return "#$result"
     }
 
     // устанавливаем в окно выбраный цвет и прячем окно с выбором цвета
-    private fun setTextBackground(text: TextView, color: Int) {
-        text.setBackgroundColor(color)
+    private fun setTextBackground(text: TextView, color: String) {
+        text.setBackgroundColor(color.toColorInt())
         binding.ColorList.visibility = View.INVISIBLE
     }
 
@@ -99,32 +110,54 @@ class MainActivity : AppCompatActivity() {
         params.startToEnd = value
         params.marginEnd = 8
         view.requestLayout()
-
     }
 
     private fun result() {   // Мешает цвета
         val sumColor = ColorUtils.blendARGB(
-            getColorIdInTextView(binding.InputColor),
-            getColorIdInTextView(binding.InputColor2), 0.5f
+            getColorIdInTextView(binding.InputColor).toColorInt(),
+            getColorIdInTextView(binding.InputColor2).toColorInt(), 0.5f
         )
-        val result = ColorUtils.blendARGB(sumColor, getColorIdInTextView(binding.InputColor3), 0.3f)
+        val result = ColorUtils.blendARGB(
+            sumColor,
+            getColorIdInTextView(binding.InputColor3).toColorInt(),
+            0.3f
+        )
         binding.ResultColorView.setBackgroundColor(result)
+        binding.textView7.text = Integer.toHexString(result).drop(2)
     }
 
-//    private fun colorName(text: TextView) {
-//        when (color) {
-//            "-16777216" -> text.text = "черный"
-//            "-8355712" -> text.text = "Темно-Серый"
-//            "-5658199" -> text.text = "Серый"
-//            "-28948993" -> text.text = "Светло-Серый"
-//            "-1" -> text.text = "Белый"
-//            "-65536" -> text.text = "Красный"
-//            "-16711936" -> text.text = "Зеленый"
-//            "-16776961" -> text.text = "Синий"
-//            "-256" -> text.text = "Желтый"
-//            "-16711681" -> text.text = "Голубой"
-//            "-65281" -> text.text = "Розовый"
-//        }
+    private fun changeLang(color: Int, langCheck:Boolean = false):String {
+        val mapEng = HashMap<Int, String>()
+        mapEng[Color.BLUE] = "Blue"
+        mapEng[Color.BLACK] = "Black"
+        mapEng[Color.WHITE] = "White"
+        mapEng[Color.YELLOW] = "Yellow"
+        mapEng[Color.GREEN] = "Green"
+        mapEng[Color.CYAN] = "Cyan"
+        mapEng[Color.MAGENTA] = "Magenta"
+        mapEng[Color.RED] = "Red"
+        mapEng[Color.GRAY] = "Gray"
+        mapEng[Color.DKGRAY] = "Dark Grey"
+        mapEng[Color.LTGRAY] = "Light Grey"
+
+        val map = HashMap<Int, String>()
+        map[Color.BLUE] = "Синий"
+        map[Color.BLACK] = "Черный"
+        map[Color.WHITE] = "Белый"
+        map[Color.YELLOW] = "Желтый"
+        map[Color.GREEN] = "Зеленый"
+        map[Color.CYAN] = "Голубой"
+        map[Color.MAGENTA] = "Розовый"
+        map[Color.RED] = "красный"
+        map[Color.GRAY] = "Серый"
+        map[Color.DKGRAY] = "Темно серый"
+        map[Color.LTGRAY] = "Светло серый"
+        return if(langCheck){
+            mapEng.getValue(color)
+        }else{
+            map.getValue(color)
+        }
+    }
 }
 
 

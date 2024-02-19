@@ -138,8 +138,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-        android:textOff="Рус"
-        android:textOn="Eng"
+        android:textOff="Eng"
+        android:textOn="Рус"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -172,7 +172,7 @@
                     android:id="@+id/textView15"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@color/gray"
+                    android:background="#FF888888"
                     android:clickable="true" />
             </TableRow>
 
@@ -184,14 +184,14 @@
                     android:id="@+id/textView16"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@color/dark_gray"
+                    android:background="#FF444444"
                     android:clickable="true" />
 
                 <TextView
                     android:id="@+id/textView17"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@color/light_grey"
+                    android:background="#FFCCCCCC"
                     android:clickable="true" />
             </TableRow>
 
